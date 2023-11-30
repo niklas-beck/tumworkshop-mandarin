@@ -27,5 +27,8 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
 
 
 # Add a new function here
-
+def sum()->int:
+    a=int(input("provide a")
+    b=int(input("provide b")
+    return a+b
 # TODO
