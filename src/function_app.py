@@ -27,8 +27,23 @@ def http_trigger(req: func.HttpRequest) -> func.HttpResponse:
 
 
 # Add a new function here
-def sum()->int:
-    a=int(input("provide a")
-    b=int(input("provide b")
-    return a+b
+def sum(req: func.HttpRequest) -> func.HttpResponse:
+    logging.info('Python HTTP trigger function processed a request.')
+
+    name = req.params.get(a,b)
+    if not name:
+        try:
+            req_body = req.get_json()
+        except ValueError:
+            pass
+        else:
+            name = req_body.get('name')
+
+    if name:
+        return func.HttpResponse(f"sum of {a} + {b} ={a+b}")
+    else:
+        return func.HttpResponse(
+             "This HTTP triggered function executed successfully. But who are you?",
+             status_code=200
+        )
 # TODO
